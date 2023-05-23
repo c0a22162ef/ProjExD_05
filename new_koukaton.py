@@ -377,7 +377,7 @@ def main():
     exps = pg.sprite.Group()
     emys = pg.sprite.Group()
     Shields = pg.sprite.Group()
-    i = 0
+    i = 0 #クリア後の分岐のための真偽値
 
     gravity = pg.sprite.Group()
     tmr = 0
@@ -410,7 +410,7 @@ def main():
             if event.type == pg.KEYDOWN and event.key == pg.K_RETURN:
                 pg.quit()
                 sys.exit()
-            if i != 0 and event.type == pg.KEYDOWN and event.key == pg.K_SPACE:
+            if i != 0 and event.type == pg.KEYDOWN and event.key == pg.K_SPACE: #クリア後スペースを押すともう一度プレイできる
                 main()
 
         screen.blit(bg_img, [0, 0])
@@ -466,13 +466,13 @@ def main():
                 neo_beam = NeoBeam(bird, num_beams)
                 beams.add(*neo_beam.gen_beams())
 
-        if score.score >= 20 :
+        if score.score >= 50 : #scoreが50点以上になると
             screen.blit(bg_img, [0, 0])
             screen.blit(clear_img, [300, 200]) # ゲームクリア
             i = 1
-            score.update(screen)
-            finish.update(screen)
-            conti.update(screen)
+            score.update(screen) #スコア表示
+            finish.update(screen) #終わらせるボタンを表示
+            conti.update(screen) #続けるボタンを表示
             pg.display.update()
             #stime.sleep(5)
             #return
@@ -497,7 +497,7 @@ def main():
             clock.tick(50)
 
         else:
-            if event.type == pg.KEYDOWN and event.key == pg.K_RETURN:
+            if event.type == pg.KEYDOWN and event.key == pg.K_RETURN: #エンターキーを押したときにプログラムを終了
                 pg.quit()
                 sys.exit()
                 
