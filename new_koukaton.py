@@ -294,9 +294,7 @@ class Score:
 
 class Finish:
     """
-    打ち落とした爆弾，敵機の数をスコアとして表示するクラス
-    爆弾：1点
-    敵機：10点
+    プログラムを終わらせるためのボタン表示
     """
     def __init__(self):
         self.font = pg.font.Font(None, 50)
@@ -311,9 +309,7 @@ class Finish:
 
 class Continue:
     """
-    打ち落とした爆弾，敵機の数をスコアとして表示するクラス
-    爆弾：1点
-    敵機：10点
+    プログラムを続けるためのボタン表示
     """
     def __init__(self):
         self.font = pg.font.Font(None, 50)
@@ -469,7 +465,7 @@ def main():
         if score.score >= 50 : #scoreが50点以上になると
             screen.blit(bg_img, [0, 0])
             screen.blit(clear_img, [300, 200]) # ゲームクリア
-            i = 1
+            i = 1 #クリア後というのを示す
             score.update(screen) #スコア表示
             finish.update(screen) #終わらせるボタンを表示
             conti.update(screen) #続けるボタンを表示
@@ -478,7 +474,7 @@ def main():
             #return
         
         
-        if i == 0:
+        if i == 0: #クリアしていない時に実行するもの
             bird.update(key_lst, screen)
             beams.update()
             beams.draw(screen)
